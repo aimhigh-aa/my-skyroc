@@ -1,12 +1,11 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import { RouterProvider } from "@/features/router";
 
 import "./App.css";
 
 function App() {
-  return <RouterProvider />;
+  return (<><h1 className="text-red-950">hello world</h1></>);
 }
 
 export default App;
