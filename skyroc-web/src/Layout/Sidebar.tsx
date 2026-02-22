@@ -15,7 +15,7 @@ import { icons } from "antd/es/image/PreviewGroup";
 import { SidebarHead } from "./components/SidebarHead";
 import { useNavigate } from "react-router-dom";
 
-export function Sidebar() {
+export function Sidebar({collapsed}: { collapsed: boolean }) {
   type MenuItem = Required<MenuProps>["items"][number];
 
   const items: MenuItem[] = [
@@ -56,7 +56,7 @@ export function Sidebar() {
   return (
     <>
       <div >
-        <SidebarHead />
+        <SidebarHead collapsed={collapsed}/>
         <Menu
           className="h-screen"
           items={items}
@@ -64,6 +64,7 @@ export function Sidebar() {
           defaultOpenKeys={["sub1"]}
           onClick={handleMenuClick}
           mode="inline"
+          inlineCollapsed={collapsed}
         ></Menu>
       </div>
     </>
