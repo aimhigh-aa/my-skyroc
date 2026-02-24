@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+# Skyroc Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+基于 **React 19** 和 **Vite 7** 构建的现代化企业级中后台前端项目。集成 **Ant Design 6** 优雅的组件体系与 **Tailwind CSS 4** 的原子化样式能力，提供极速的开发体验与高性能的运行时表现。
 
-Currently, two official plugins are available:
+## 🚀 技术栈
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **核心框架**: [React 19](https://react.dev/) (并发渲染、自动批处理)
+- **构建工具**: [Vite 7](https://vite.dev/) (基于 Rollup 的极速构建)
+- **UI 组件库**: [Ant Design 6.3](https://ant.design/) (CSS-in-JS、动态主题)
+- **样式处理**: [Tailwind CSS 4.1](https://tailwindcss.com/) + PostCSS (原子化样式引擎)
+- **路由方案**: [React Router 7](https://reactrouter.com/) (现代数据驱动路由)
+- **类型安全**: [TypeScript 5.9](https://www.typescriptlang.org/) (严格类型检查)
+- **代码规范**: ESLint 9 + typescript-eslint 8 (扁平配置模式)
 
-## React Compiler
+## ✨ 功能特性
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **现代 React 架构**: 全面拥抱 React 19 最新特性与 Hooks 实践。
+- **智能路由管理**: 集成 `@soybean-react/vite-plugin-react-router`，支持声明式路由增强。
+- **动态主题**: 基于 Ant Design 6 的 Design Token，支持无需刷新的一键换肤。
+- **极致工程化**: 预设完善的 TypeScript 项目引用 (Project References) 结构。
+- **高性能打包**: Vite 7 配合 Tailwind 4 编译器，显著提升热更新与生产构建速度。
 
-## Expanding the ESLint configuration
+## 🛠️ 环境要求
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Node.js**: v22.20.0+ (建议使用当前 LTS 版本)
+- **包管理器**: [pnpm](https://pnpm.io/) v10.x (本项目强制要求)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 安装与运行
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 1. 安装依赖
+由于 pnpm v10 安全机制，首次安装需授权 esbuild 等构建脚本：
+```bash
+pnpm install
+pnpm approve-builds
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. 本地开发
+启动 Vite 预览服务器：
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Bash
+pnpm dev
+访问地址: http://localhost:5173
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3. 项目构建
+执行生产环境编译：
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Bash
+pnpm build
+4. 预览与检查
+Bash
+# 预览构建产物
+pnpm preview
+
+# 代码格式规范检查
+pnpm lint
