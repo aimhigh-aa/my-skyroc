@@ -1,11 +1,21 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import {router} from './router/index'
+
+import { RouterProvider } from 'react-router-dom'
+import { StrictMode } from 'react'
 
 import "./App.css";
 
 function App() {
-  return (<><h1 className="text-red-950">hello world</h1></>);
+  return (
+    <>
+      <StrictMode>
+        <RouterProvider router={router} />
+      </StrictMode>
+    </>
+  );
 }
 
 export default App;
