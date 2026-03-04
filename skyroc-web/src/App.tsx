@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import {router} from './router/index'
 
 import { RouterProvider } from 'react-router-dom'
+import { RouterProvider as MyRouterProvider } from "@/features/router/RouterProvider";
 import { StrictMode } from 'react'
 
 import "./App.css";
@@ -12,7 +13,7 @@ function App() {
   return (
     <>
       <StrictMode>
-        <RouterProvider router={router} />
+        <MyRouterProvider/>
       </StrictMode>
     </>
   );
