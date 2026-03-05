@@ -21,7 +21,7 @@ const routes = [
             element: <Layout />,
             handle: {
                 title: '首页',
-                icon: 'home-icon'      // 对应 SvgIcon 的 name
+                icon: 'HomeOutlined'      // 对应 SvgIcon 的 name
             },
             children: [
                 {
@@ -29,7 +29,7 @@ const routes = [
                     element: <User />,
                     handle: {
                         title: '用户管理',
-                        icon: 'user-icon',
+                        icon: 'UserOutlined',
                         order: 1 // 对应你代码中的 sortRoutesByOrder
                     },
                 },
@@ -38,7 +38,7 @@ const routes = [
                     element: <Demo />,
                     handle: {
                         title: '示例页面',
-                        icon: 'demo-icon',
+                        icon: 'ExclamationCircleOutlined',
                         order: 2
                     },
                 },
@@ -47,7 +47,7 @@ const routes = [
                     element: <Chart />,
                     handle: {
                         title: '图表分析',
-                        icon: 'chart-icon',
+                        icon: 'LineChartOutlined',
                         order: 3
                     },
                 },
@@ -56,7 +56,7 @@ const routes = [
                     element: <Setting />,
                     handle: {
                         title: '系统设置',
-                        icon: 'setting-icon',
+                        icon: 'SettingOutlined',
                         order: 4
                     },
                 }

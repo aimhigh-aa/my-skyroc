@@ -1,6 +1,7 @@
 import type { RouteObject } from "react-router-dom";
 import * as Icons from "@ant-design/icons"; // 导入所有图标
 import React from "react";
+import { Link } from "react-router-dom";
 
 /**
  * 根据权限路由列表生成菜单数据
@@ -66,24 +67,29 @@ export function getGlobalMenuByBaseRoute(route: RouteObject): App.Global.Menu {
   const menu: App.Global.Menu = {
     icon: AntdIcon
       ? React.createElement(AntdIcon, {
-          style: { fontSize: "18px" },
+          style: { fontSize: "15px" },
         })
       : null,
     key: path || "",
     label: (
-      <span
-        title={label}
-        style={{
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-        }}
-      >
-        {label}
-      </span>
+      <Link to={path || "/"}>{title}</Link>
     ),
     title: label,
   };
 
   return menu;
+}
+
+export function getSelectKey(route:any){
+  const {activeMenu , hideInMenu} = route.currentHandle || {};
+
+  const name = route.pathname;
+
+  // 3. 逻辑：如果当前路由被隐藏，则高亮指定的 activeMenu 路径；否则高亮当前路径
+  // 这里的 activeMenu 通常在路由配置中设置为父级或相关页面的路径
+  const routeName = (hideInMenu ? activeMenu : name) || name;
+
+  //为了适配antd Menu 返回数组
+  return [routeName]
+
 }

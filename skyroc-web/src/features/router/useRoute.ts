@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useLocation,useMatches } from "react-router-dom";
 
+
 /**
  * 1. 从 useMatches 获取匹配到的路由层级数组。
  * 2. 过滤掉不需要显示的路由（比如没有 title 的根容器）。
@@ -33,6 +34,8 @@ export function useRoute(){
         }
 
     }, [matches, pathname, search, hash])
+
+    return route;
 }
 
 
