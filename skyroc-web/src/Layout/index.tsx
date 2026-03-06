@@ -14,24 +14,24 @@ export function Layout() {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <>
-    <MenuProvider>
-      <TabBarProvider>
-        <AntLayout>
-          <Sider collapsed={collapsed}>
-            <Sidebar collapsed={collapsed} />
-          </Sider>
-          <AntLayout  style={{ background: '#fff', padding: 0,width:'100vw' }}  >
-            <AntHeader style={{ background: '#fff', padding: 0 ,width:'100%'}} >
-              <Header collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
-            </AntHeader>
-            <TabBar />
-            <Content>
-              <Outlet />
-            </Content>
+      <MenuProvider>
+        <TabBarProvider>
+          <AntLayout style={{ background: "transparent"}}>
+            <Sider collapsed={collapsed}>
+              <Sidebar collapsed={collapsed} />
+            </Sider>
+            <AntLayout  style={{  padding: 0,width:'100vw',  }}  >
+              <AntHeader style={{ padding: 0 ,width:'100%',background: 'transparent',}} >
+                <Header collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
+              </AntHeader>
+              <TabBar />
+              <Content>
+                <Outlet />
+              </Content>
+            </AntLayout>
           </AntLayout>
-        </AntLayout>
-      </TabBarProvider>
-    </MenuProvider>
+        </TabBarProvider>
+      </MenuProvider>
     </>
   );
 }

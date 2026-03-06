@@ -4,13 +4,14 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
-import { ClickToComponent } from "click-to-react-component";
+import { ThemeProvider } from "./features/theme";
 
 createRoot(document.getElementById("root")!).render(
   <>
-    <ClickToComponent />
-    <Provider store={store}>
-      <App />
-    </Provider>
+      <Provider store={store}>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </Provider>
   </>,
 );

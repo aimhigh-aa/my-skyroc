@@ -66,7 +66,6 @@ export const tabSlice = createSlice({
     //关闭所有标签,保留首页
     closeAllTabs(state){
         state.tabs = state.tabs.filter(t=>t.key === state.hoomTab);
-        console.log('关闭所有后',state.tabs)
         state.activateKey = state.hoomTab;
     },
     //初始化首页标签

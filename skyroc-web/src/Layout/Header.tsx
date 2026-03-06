@@ -2,11 +2,15 @@ import { Button } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  ExceptionOutlined,
+  SearchOutlined,
+  FullscreenOutlined
 } from "@ant-design/icons";
 import { Breadcrumb } from "antd";
 import { useMixMenuContext } from "../features/menu/MenuContext";
 import { getBreadcrumbItems } from "./breadCrumbShared";
+import { ButtonIcon } from "./components/ButtonIcons";
+import { FullScreen } from "./components/FullScreen";
+import { ThemeSchemaSwitch } from "@/features/theme";
 export function Header({
   onToggle,
   collapsed,
@@ -34,7 +38,8 @@ export function Header({
 
 
   return (
-    <div className="flex bg-white w-[full] items-center justify-between">
+    <div className="flex h-full   w-[full] items-center justify-between  bg-container text-base-text transition-300">
+      {/* 菜单按钮*/}
       <div className="flex items-center py-[10px]">
         <Button
           type="text"
@@ -43,7 +48,16 @@ export function Header({
           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         ></Button>
         <Breadcrumb items={breadItems} />
-
+      </div>
+      {/* 功能按钮*/}
+      <div className="felx items-center gap-2">
+        <ButtonIcon tooltipContent="搜索">
+          <SearchOutlined style={{ fontSize: "15px"}} />
+        </ButtonIcon>
+        {/* 全屏 */}
+        <FullScreen />
+        {/* 主题切换 */}
+        <ThemeSchemaSwitch/>
       </div>
     </div>
   );

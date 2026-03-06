@@ -3,7 +3,129 @@
 
 
 
+/* 1. 基础容器调整：消除间距 */
+.custom-tabs .ant-tabs-nav {
+    margin-bottom: 0 !important;
+}
 
+.custom-tabs .ant-tabs-nav-wrap {
+    padding-left: 20px; /* 为第一个标签左侧的圆角留出空间 */
+}
+
+/* 2. 移除默认的下划线蓝条 */
+.custom-tabs .ant-tabs-ink-bar {
+    display: none !important;
+}
+
+/* 3. Tab 标签核心样式 */
+.custom-tabs .ant-tabs-tab {
+    position: relative !important;
+    margin: 0 -10px 0 0 !important; /* 关键：负边距实现标签重叠嵌合 */
+    padding: 8px 24px !important;   /* 增加内边距防止文字靠近圆角 */
+    border: none !important;
+    background: transparent !important;
+    border-radius: 12px 12px 0 0 !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer;
+    z-index: 1; /* 默认层级 */
+}
+
+/* 4. 伪元素实现 Chrome 平滑内凹圆角 */
+.custom-tabs .ant-tabs-tab::before,
+.custom-tabs .ant-tabs-tab::after {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: -1;
+    /* 初始状态：圆角颜色设为透明 */
+    box-shadow: 0 0 0 40px transparent;
+}
+
+/* 左侧圆角定位与裁剪 */
+.custom-tabs .ant-tabs-tab::before {
+    left: -20px;
+    clip-path: inset(50% 0 0 50%);
+}
+
+/* 右侧圆角定位与裁剪 */
+.custom-tabs .ant-tabs-tab::after {
+    right: -20px;
+    clip-path: inset(50% 50% 0 0);
+}
+
+/* --- 5. 状态机逻辑 (适配暗色模式) --- */
+
+/* A. 悬停状态 (非激活标签) */
+.custom-tabs .ant-tabs-tab:hover {
+    /* 使用 AntD 的填充色变量，暗色模式下它会自动变深 */
+    background: var(--ant-color-fill-content) !important;
+    z-index: 5 !important;
+}
+.custom-tabs .ant-tabs-tab:hover::before,
+.custom-tabs .ant-tabs-tab:hover::after {
+    /* 圆角阴影颜色同步变量 */
+    box-shadow: 0 0 0 40px var(--ant-color-fill-content);
+}
+
+/* B. 激活状态 */
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active {
+    /* 使用主色背景变量 */
+    background: var(--ant-color-primary-bg) !important;
+    z-index: 10 !important;
+}
+
+/* 激活态文字颜色 */
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: var(--ant-color-primary) !important;
+}
+
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active::before,
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active::after {
+    /* 圆角阴影同步激活背景 */
+    box-shadow: 0 0 0 40px var(--ant-color-primary-bg);
+}
+
+/* C. 激活态 Hover 保持激活色 */
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active:hover {
+    background: var(--ant-color-primary-bg) !important;
+}
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active:hover::before,
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active:hover::after {
+    box-shadow: 0 0 0 40px var(--ant-color-primary-bg) !important;
+}
+
+/* 6. 关闭按钮微调 (适配暗色) */
+.custom-tabs .ant-tabs-tab-remove {
+    margin-left: 8px !important;
+    margin-right: -4px !important;
+    color: var(--ant-color-text-description);
+    transition: all 0.2s;
+}
+
+.custom-tabs .ant-tabs-tab-remove:hover {
+    color: var(--ant-color-error) !important; /* 悬停变为错误色（红） */
+    background: var(--ant-color-fill-secondary);
+    border-radius: 50%;
+}
+
+/* 6. 关闭按钮微调 */
+.custom-tabs .ant-tabs-tab-remove {
+    margin-left: 8px !important;
+    margin-right: -4px !important;
+    color: #8c8c8c;
+    transition: all 0.2s;
+}
+
+.custom-tabs .ant-tabs-tab-remove:hover {
+    color: #f5f5f5 !important;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 50%;
+}
 
 
 

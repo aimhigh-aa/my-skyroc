@@ -15,17 +15,20 @@ export function TabBar() {
     const router = useRouter();
     const { push } = router;
 
+    useEffect(() => {
+        router.push(activateKey);
+    }, [activateKey])
+
 
 
     const handelTabClick = (key: string) => {
-        console.log('焦点切换',key)
+        console.log('点击',tabs);
         dispatch(setActivateTab(key));
         push(key);
     }
 
     // TabBar.tsx
     const handleRemove = (targetKey: string) => {
-        console.log('触发删除',targetKey);
         
         dispatch(removeTab(targetKey));  // 再删除
     };
@@ -76,7 +79,8 @@ export function TabBar() {
             label: (<Dropdown menu={{ items: getContextMenu(t.key) }} trigger={['contextMenu']}>
                 <span>{t.title}</span>
             </Dropdown>),
-            icon: icon ? React.createElement((AntdIcons as any)[t.icon], { style: { fontSize: "15px" } }) : null
+            icon: icon ? React.createElement((AntdIcons as any)[t.icon], { style: { fontSize: "15px" } }) : null,
+            closable: t.title === '首页'?false:true,
 
         }
     })
@@ -88,7 +92,7 @@ export function TabBar() {
                 if (action === 'remove') {
                     handleRemove(targetKey as string)
                 }
-            }} hideAdd className="px-4"></Tabs>
+            }} hideAdd className="px-4 custom-tabs"></Tabs>
         </div>
     )
 

@@ -2,11 +2,12 @@
 
 import { routeSlice } from '@/router/routeStore'
 import { tabSlice } from '@/features/tab/tabStore'
+import { themeSlice } from '@/features/theme/themeStore'
 import { combineSlices, configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux' // 新增
 
 // 利用redux toolkit 2.0的新特性combineSlices合并reducer
-const rootReducer = combineSlices(routeSlice,tabSlice) 
+const rootReducer = combineSlices(routeSlice,tabSlice,themeSlice) 
 
 export const store = configureStore({
   reducer: rootReducer,
